@@ -58,7 +58,7 @@ function updateCity(url) {
 
 
 function searchCity(){
-    var pesquisa = document.getElementById(campoSearch);
+    var pesquisa = document.getElementById("campoSearch");
     console.log(pesquisa.value);
 }
 
