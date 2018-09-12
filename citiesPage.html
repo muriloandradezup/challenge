@@ -24,6 +24,10 @@
 
     <!-- Meu Script -->
     <script src="challengeEngine.js"></script>
+    <script src="requests.js"></script>
+    <script src="constructor.js"></script>
+
+
 
 </head>
 
@@ -55,11 +59,11 @@
 
 
     <div id="tblContainer"  class="table-responsive">
-        <table id="tabelaCidades" class="table table-striped table-bordered table-hover">
+        <table id="tabela" class="table table-striped table-bordered table-hover">
             <thead>
             <tr>
                 <th>Nome</th>
-                <th width="35%">Opções</th>
+                <th width="40%">Opções</th>
 
             </tr>
             </thead>
@@ -86,7 +90,7 @@
             <!– Corpo da janela modal -->
             <div class="modal-body">
 
-                <span>Nome da Cidade: </span><input id= "campoNome" type="text">
+                <span>Nome da Cidade: </span><input id= "campoNomeAdd" type="text">
             </div>
             <!– Rodapé da janela modal -->
             <div class="modal-footer">
@@ -109,11 +113,11 @@
             <!– Corpo da janela modal -->
             <div class="modal-body">
 
-                <label>Novo nome: </label><input id= "campoNome" type="text">
+                <label>Novo nome: </label><input id= "campoNomeEdit" type="text">
             </div>
             <!– Rodapé da janela modal -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                <button id="confirmaEdit" type="button" class="btn btn-primary" data-dismiss="modal" onclick="editaCidade(this.value)" >Salvar</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
         </div>
@@ -136,7 +140,7 @@
             </div>
             <!– Rodapé da janela modal -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Deletar</button>
+                <button type="button" id="confirmaDelete" class="btn btn-danger" data-dismiss="modal" onclick="deletaCidade(this.value)">Deletar</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
@@ -147,13 +151,9 @@
 
 <script>
 
+    constroiTabelaCidade();
 
 
-    carregaCidades("https://customers-challenge.herokuapp.com/cities", function (objeto) {
-        var cidades = objeto._embedded.cities;
-        constroiTabelaCidade(cidades);
-
-    });
 
 
 </script>

@@ -23,23 +23,135 @@
 
     <!-- Meu Script  -->
     <script src="challengeEngine.js"></script>
+    <script src="requests.js"></script>
+    <script src="constructor.js"></script>
+
 
 </head>
 
-<body id="citiesPage">
+<body id="clientsPage">
 <nav class="navbar">
     <ul class="nav navbar-left"> <li id="home"><a href="frontpage.html"
     >Home</a></li>
         <li id="cities"><a href="citiesPage.html">Cidades</a></li>
-        <li id="clients" class="active"><a href="clientsPage.html">Clientes</a></li>
+        <li id="clients"  class="active"><a href="clientsPage.html">Clientes</a></li>
     </ul>
 </nav>
+
 <div class="container">
-<h1 class="page-header">Clientes</h1>
+    <h1 class="page-header">Clientes</h1>
+</div>
+
+<div class="container card">
+        <span>Pesquisar Cliente: <input id="campoSearch" type="text">
+        <button class="btn btn-primary" onclick="searchClient()" >Go!</button>
+
+        </span>
+</div>
+
+<br>
+
+
+<div id="tblContainer"  class="table-responsive">
+    <table id="tabela" class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cidade</th>
+            <th width="30%">Opções</th>
+
+        </tr>
+        </thead>
+
+    </table>
+</div>
+
+<div class="container">
+    <button class="btn btn-block btn-primary" data-toggle='modal' datatarget='#modalAdd' onclick="newClient( )" >Novo Cliente</button>
+    <br>
 </div>
 
 
 
+<div class="modal fade" id="modalAdd" role="dialog">
+    <div class="modal-dialog">
 
+        <div class="modal-content">
+            <!– Cabeçalho da janela modal -->
+            <div class="modal-header">
+                <h4 class="modal-title">Adicionar Cliente</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!– Corpo da janela modal -->
+            <div class="modal-body">
+
+                <span>Nome do Cliente: </span><input id= "campoNome" type="text">
+                <span>Cidade: </span><input id= "campoCity" type="text">
+
+            </div>
+            <!– Rodapé da janela modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalEdit" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <!– Cabeçalho da janela modal -->
+            <div class="modal-header">
+                <h4 class="modal-title">Editar Cliente</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!– Corpo da janela modal -->
+            <div class="modal-body">
+
+                <label>Novo nome: </label><input id= "campoNomeAdd" type="text">
+                <label>Cidade: </label><input id= "campoCidadeAdd" type="text">
+            </div>
+            <!– Rodapé da janela modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalDelete" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <!– Cabeçalho da janela modal -->
+            <div class="modal-header">
+                <h4 class="modal-title">Deletar Cliente</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!– Corpo da janela modal -->
+            <div class="modal-body">
+
+                <span>Tem certeza que deseja deletar este Cliente? </span>
+            </div>
+            <!– Rodapé da janela modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Deletar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+<script>
+    constroiTabelaCliente();
+
+
+</script>
 
 </body>
