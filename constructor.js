@@ -4,7 +4,7 @@ function constroiTabelaCliente(url) {
     carrega(url, function (objeto) {
         var lista = objeto._embedded.customers;
         var cell1;
-        var cell2;
+        var cell2 = [];
         var cell3;
         var row;
 
@@ -19,20 +19,20 @@ function constroiTabelaCliente(url) {
 
                 row = document.createElement("tr");
                 cell1 = document.createElement("td");
-                cell2 = document.createElement("td");
+                cell2[j] = document.createElement("td");
                 cell3 = document.createElement("td");
 
                 cell1.textContent = lista[j].name;
 
-                carrega(lista[j]._links.city.href, function (cidadeCliente) {
-                    cell2.textContent = cidadeCliente.name;
+                carrega(lista[j]._links.city.href, function (cidadeCliente, i) {
+                    cell2[i].textContent = cidadeCliente.name;
                 },j);
 
 
                 cell3.innerHTML = "<button type=\'button\' class=\'btn btn-primary\' data-toggle=\'modal\' datatarget=\'#modalUpdate\' value='" + lista[j]._links.self.href +"' onclick=\'updateClient(this.value)\'>Editar</button>";
                 cell3.innerHTML += "<button type=\'button\' class=\'btn btn-danger\' data-toggle='modal' datatarget='#modalDelete' value='" + lista[j]._links.self.href +"' onclick=\'deletar(this.value)\'>Apagar</button>";
                 row.appendChild(cell1);
-                row.appendChild(cell2);
+                row.appendChild(cell2[j]);
                 row.appendChild(cell3);
                 tblBody.appendChild(row);
 

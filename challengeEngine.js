@@ -47,7 +47,7 @@ function updateClient(url) {
 function searchCity(){
     var pesquisa = document.getElementById("campoSearch");
     var termoPesquisa = pesquisa.value;
-    if(termoPesquisa != undefined) {
+    if(termoPesquisa) {
         refreshCidade("https://customers-challenge.herokuapp.com/cities/search/findByNameIgnoreCaseContaining?name=" + termoPesquisa);
     }
     else {
@@ -60,7 +60,7 @@ function searchCity(){
 function searchClient(){
     var pesquisa = document.getElementById("campoSearch");
     var termoPesquisa = pesquisa.value;
-    if (termoPesquisa != undefined) {
+    if (termoPesquisa) {
         refreshCliente("https://customers-challenge.herokuapp.com/customers/search/findByNameIgnoreCaseContaining?name=" + termoPesquisa);
     }
     else {
