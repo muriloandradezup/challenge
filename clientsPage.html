@@ -43,22 +43,22 @@
 </div>
 
 <div class="container card">
-        <span>Pesquisar Cliente: <input id="campoSearch" type="text">
-        <button class="btn btn-primary" onclick="searchClient()" >Go!</button>
+    <span id="pesquisa">
+        <span>Pesquisar Cliente: </span><input id="campoSearch" type="text">
+        <button class="btn btn-primary" id="goButton" onclick="searchClient()" >Go!</button>
 
         </span>
 </div>
 
 <br>
 
-
 <div id="tblContainer"  class="table-responsive">
     <table id="tabela" class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
-            <th>Nome</th>
-            <th>Cidade</th>
-            <th width="30%">Opções</th>
+            <th width="30%">Nome</th>
+            <th width="35%">Cidade</th>
+            <th width="26%">Opções</th>
 
         </tr>
         </thead>
@@ -70,6 +70,9 @@
     <button class="btn btn-block btn-primary" data-toggle='modal' datatarget='#modalAdd' onclick="newClient( )" >Novo Cliente</button>
     <br>
 </div>
+
+<div class="container" id="navButtons" align="center"></div>
+    <br>
 
 
 
@@ -83,16 +86,22 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!– Corpo da janela modal -->
-            <div class="modal-body">
+            <div class="modal-body" >
 
-                <span>Nome do Cliente: </span><input id= "campoNome" type="text">
-                <span>Cidade: </span><input id= "campoCity" type="text">
+                <div><label>Novo nome: </label><input id= "campoNomeAdd" type="text"></div>
+                <span>Pesquisar Cidade: <input id="pesqCidade" type="text"></span>
+                <button class="btn btn-primary" onclick="sugereCidadeAdd()" >Go!</button>
 
-            </div>
-            <!– Rodapé da janela modal -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <div>
+                    <select class='form-control' style="margin-top: 10px"  id="cidadeEscolhida" type='text'></select>
+                </div>
+
+
+                <!– Rodapé da janela modal -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addCliente()">Salvar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -108,18 +117,25 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!– Corpo da janela modal -->
-            <div class="modal-body">
+            <div class="modal-body" >
 
-                <label>Novo nome: </label><input id= "campoNomeAdd" type="text">
-                <label>Cidade: </label><input id= "campoCidadeAdd" type="text">
-            </div>
+                <div><label>Novo nome: </label><input id= "campoNomeEdit" type="text"></div>
+                <span>Pesquisar Cidade: <input id="novaCidade" type="text"></span>
+                <button class="btn btn-primary" onclick="sugereCidade()" >Go!</button>
+
+                    <div>
+                        <select class='form-control' style="margin-top: 10px"  id="selecionaCidade" type='text'></select>
+                    </div>
+
+
             <!– Rodapé da janela modal -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                <button type="button" id="confirmaEdit" class="btn btn-primary" data-dismiss="modal" onclick="editaCliente(this.value)">Salvar</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <div class="modal fade" id="modalDelete" role="dialog">
@@ -138,18 +154,20 @@
             </div>
             <!– Rodapé da janela modal -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Deletar</button>
+                <button type="button" id="confirmaDelete" class="btn btn-danger" data-dismiss="modal" onclick="deletaCliente(this.value)">Deletar</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
 </div>
 
+
+
 </body>
 </html>
 
 <script>
-    constroiTabelaCliente();
+    constroiTabelaCliente("https://customers-challenge.herokuapp.com/customers");
 
 
 </script>
