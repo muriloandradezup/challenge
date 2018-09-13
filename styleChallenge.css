@@ -1,10 +1,9 @@
 li {
     font-size: 18px;
     width: 33%;
-    padding: 6px;
     margin-left: 1px;
     text-align: center;
-    padding-top: 10px;
+    padding: 17px 6px 6px;
 
 }
 
@@ -52,6 +51,7 @@ body {
     font-weight: bolder;
     font-size: 20px;
 
+
 }
 
 .table {
@@ -88,9 +88,10 @@ h1 {
 button {
     margin-left:10px;
     margin: 3px;
-    padding: 2px;
+    padding: 0px;
     width: 90px;
     text-align: center;
+    ;
 }
 
 input { margin-left: 3px;
@@ -104,10 +105,7 @@ border: solid darkgray 1px;
     width: 35%;
 }
 
-#goButton {
-    width: 18%;
-    margin: 0px ;
-}
+
 
 #tblContainer {
     width: 100%;
@@ -120,3 +118,26 @@ border: solid darkgray 1px;
     padding: 2px;
     align-content: center;
     }
+
+#campoNomeEdit {
+    width: 80%;
+}
+
+#campoNomeAdd {
+    width: 80%;
+}
+
+.btn-sm {
+    width: 50px;
+    margin: 0px ;
+
+}
+
+#novaCidade {
+    width: 58%;
+}
+
+
+#pesqCidade {
+    width: 58%;
+}

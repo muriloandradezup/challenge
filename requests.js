@@ -17,6 +17,7 @@ function carrega(url, callback,j) {
 
 function editaCidade(url) {
     var campo = document.getElementById("campoNomeEdit");
+    campo.blur();
     var httpRequest = new XMLHttpRequest();
     httpRequest.open("PUT", url, true);
     httpRequest.setRequestHeader('Content-type', 'application/json; charset=utf-8');
